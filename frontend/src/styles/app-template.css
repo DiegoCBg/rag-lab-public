@@ -1,0 +1,25 @@
+.brand-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100px;
+  height: 100px;
+  background: transparent;
+  z-index: var(--ui-z-brand-asset);
+}
+
+.brand-badge svg {
+  width: 80px;
+  height: 80px;
+  color: var(--ui-accent);
+}
+
+.brand-logo {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  z-index: var(--ui-z-brand-asset);
+  transition: transform 0.2s ease;
+}

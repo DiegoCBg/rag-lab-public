@@ -1,0 +1,225 @@
+:root {
+  /* Theme — Apple Glass + Microsoft Fluent Acrylic Design System */
+  color-scheme: light;
+  --ui-gap-standard: 18px;
+  --ui-card-padding: 22px;
+
+  /* Fondos e Vidro Acrílico (Apple / Fluent Glass) */
+  --ui-bg: #f8fafc;
+  --ui-surface: rgba(255, 255, 255, 0.75);
+  --ui-surface-2: rgba(241, 245, 249, 0.8);
+  --ui-surface-hover: rgba(255, 255, 255, 0.95);
+  --ui-container-background: rgba(255, 255, 255, 0.72);
+  --ui-glass-blur: blur(20px) saturate(180%);
+  --ui-glass-border: rgba(255, 255, 255, 0.6);
+
+  /* Bordes delicados */
+  --ui-border-soft: rgba(226, 232, 240, 0.8);
+  --ui-border-strong: #cbd5e1;
+  --ui-border-focus: rgba(99, 102, 241, 0.4);
+
+  /* Textos */
+  --ui-text: #0f172a;
+  --ui-text-secondary: #475569;
+  --ui-muted: #64748b;
+
+/* Accent — Indigo Apple / Vibrant Fluent Blue */
+  --ui-accent: #6366f1; /* Light theme accent */
+   /* Hover color derived from accent – light theme */
+   --ui-accent-hover: color-mix(in srgb, var(--ui-accent) 85%, black);
+   /* Gradient using accent and hover */
+   --ui-accent-gradient: linear-gradient(135deg, var(--ui-accent) 0%, var(--ui-accent-hover) 100%);
+   /* Soft background derived from accent – light theme */
+   --ui-accent-soft: color-mix(in srgb, var(--ui-accent) 12%, transparent);
+  --ui-accent-border: rgba(99, 102, 241, 0.28);
+
+  /* Estados */
+  --ui-success: #10b981;
+  --ui-success-soft: rgba(16, 185, 129, 0.1);
+  --ui-success-border: rgba(16, 185, 129, 0.3);
+  --ui-error: #ef4444;
+  --ui-error-soft: rgba(239, 68, 68, 0.1);
+  --ui-error-border: rgba(239, 68, 68, 0.24);
+  --ui-warning: #f59e0b;
+  --ui-warning-soft: rgba(245, 158, 11, 0.1);
+  --ui-warning-border: rgba(245, 158, 11, 0.28);
+  --ui-info-border: rgba(56, 189, 248, 0.45);
+  --ui-code-bg: #0f172a;
+  --ui-code-text: #f8fafc;
+  --ui-on-accent: #ffffff;
+  --ui-diff-added-bg: rgba(16, 185, 129, 0.16);
+  --ui-diff-removed-bg: rgba(239, 68, 68, 0.16);
+
+  /* Raio dos cantos arredondados (Estilo Apple / Fluent Smooth) */
+  --ui-control-height: 44px;
+  --ui-row-height: 46px;
+  --ui-control-radius: 10px;
+  --ui-panel-radius: 16px;
+  --ui-radius-xl: 24px;
+
+  /* Elevação e Sombras Fluídas (Fluent Depth & Apple Lift) */
+  --ui-shadow-lift: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.03);
+  --ui-shadow-lift-hover: 0 12px 32px -4px rgba(99, 102, 241, 0.12), 0 4px 12px -2px rgba(15, 23, 42, 0.06);
+  --ui-card-shadow: 0 1px 3px rgba(15, 23, 42, 0.04), 0 1px 2px rgba(15, 23, 42, 0.02);
+  --ui-card-shadow-md: 0 10px 25px -5px rgba(99, 102, 241, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+  --ui-elevation-1: 0 4px 12px rgba(15, 23, 42, 0.05);
+  --ui-elevation-2: 0 8px 24px rgba(99, 102, 241, 0.1);
+  --ui-elevation-3: 0 16px 36px rgba(99, 102, 241, 0.14);
+  --ui-glow-accent: 0 0 24px rgba(99, 102, 241, 0.25);
+
+  /* Auth pages stay light even when the application theme is dark. */
+  --ui-auth-bg: #f8fafc;
+  --ui-auth-surface: rgba(255, 255, 255, 0.75);
+  --ui-auth-surface-2: rgba(241, 245, 249, 0.8);
+  --ui-auth-surface-hover: rgba(255, 255, 255, 0.95);
+  --ui-auth-container-background: rgba(255, 255, 255, 0.72);
+  --ui-auth-glass-blur: blur(20px) saturate(180%);
+  --ui-auth-glass-border: rgba(255, 255, 255, 0.6);
+  --ui-auth-border-soft: rgba(226, 232, 240, 0.8);
+  --ui-auth-border-strong: #cbd5e1;
+  --ui-auth-border-focus: rgba(99, 102, 241, 0.4);
+  --ui-auth-text: #0f172a;
+  --ui-auth-text-secondary: #475569;
+  --ui-auth-muted: #64748b;
+  --ui-auth-accent-gradient: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+  --ui-auth-accent-soft: rgba(99, 102, 241, 0.09);
+  --ui-auth-accent-border: rgba(99, 102, 241, 0.28);
+  --ui-auth-success: #10b981;
+  --ui-auth-success-soft: rgba(16, 185, 129, 0.1);
+  --ui-auth-success-border: rgba(16, 185, 129, 0.3);
+  --ui-auth-error: #ef4444;
+  --ui-auth-error-soft: rgba(239, 68, 68, 0.1);
+  --ui-auth-error-border: rgba(239, 68, 68, 0.24);
+  --ui-auth-warning: #f59e0b;
+  --ui-auth-warning-soft: rgba(245, 158, 11, 0.1);
+  --ui-auth-warning-border: rgba(245, 158, 11, 0.28);
+  --ui-auth-code-bg: #0f172a;
+  --ui-auth-code-text: #f8fafc;
+  --ui-auth-on-accent: #ffffff;
+  --ui-auth-shadow-lift: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.03);
+  --ui-auth-shadow-lift-hover: 0 12px 32px -4px rgba(99, 102, 241, 0.12), 0 4px 12px -2px rgba(15, 23, 42, 0.06);
+  --ui-auth-card-shadow: 0 1px 3px rgba(15, 23, 42, 0.04), 0 1px 2px rgba(15, 23, 42, 0.02);
+  --ui-auth-card-shadow-md: 0 10px 25px -5px rgba(99, 102, 241, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+  --ui-auth-elevation-1: 0 4px 12px rgba(15, 23, 42, 0.05);
+  --ui-auth-elevation-2: 0 8px 24px rgba(99, 102, 241, 0.1);
+  --ui-auth-elevation-3: 0 16px 36px rgba(99, 102, 241, 0.14);
+  --ui-auth-glow-accent: 0 0 24px rgba(99, 102, 241, 0.25);
+}
+
+/* ==== Tokens de Paper e Divider (para ambos os temas) ==== */
+/* Light theme – valor do surface dos cards */
+:root {
+  --ui-paper: #fafafa;
+  --ui-divider: #e7e7ea;
+}
+
+/* Dark theme overrides */
+@media (prefers-color-scheme: dark) {
+  :root[data-theme='dark'] {
+    --ui-paper: #11141c;
+    --ui-divider: #262a33;
+  }
+}
+/* Modo escuro — override das mesmas variáveis via data-theme no <html> */
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --ui-bg: #0b0d12;
+  --ui-surface: rgba(17, 20, 28, 0.85);
+  --ui-surface-2: rgba(28, 32, 42, 0.9);
+  --ui-surface-hover: rgba(31, 35, 46, 0.98);
+  --ui-container-background: rgba(17, 20, 28, 0.82);
+  --ui-glass-blur: blur(20px) saturate(160%);
+  --ui-glass-border: rgba(255, 255, 255, 0.08);
+
+  --ui-border-soft: rgba(148, 163, 184, 0.18);
+  --ui-border-strong: rgba(148, 163, 184, 0.34);
+  --ui-border-focus: rgba(129, 140, 248, 0.55);
+
+  --ui-text: #e7e9ee;
+  --ui-text-secondary: #9aa1ad;
+  --ui-muted: #6b7280;
+
+  --ui-accent: #818cf8;
+   /* Hover color derived from accent – dark theme */
+   --ui-accent-hover: color-mix(in srgb, var(--ui-accent) 85%, white);
+   /* Gradient using accent and hover */
+   --ui-accent-gradient: linear-gradient(135deg, var(--ui-accent) 0%, var(--ui-accent-hover) 100%);
+   /* Soft background derived from accent – dark theme */
+   --ui-accent-soft: color-mix(in srgb, var(--ui-accent) 12%, transparent);
+  --ui-accent-border: rgba(129, 140, 248, 0.32);
+
+  --ui-success: #34d399;
+  --ui-success-soft: rgba(52, 211, 153, 0.12);
+  --ui-success-border: rgba(52, 211, 153, 0.34);
+  --ui-error: #f87171;
+  --ui-error-soft: rgba(248, 113, 113, 0.12);
+  --ui-error-border: rgba(248, 113, 113, 0.3);
+  --ui-warning: #fbbf24;
+  --ui-warning-soft: rgba(251, 191, 36, 0.12);
+  --ui-warning-border: rgba(251, 191, 36, 0.32);
+  --ui-info-border: rgba(56, 189, 248, 0.5);
+  --ui-code-bg: #0f172a;
+  --ui-code-text: #f8fafc;
+  --ui-on-accent: #ffffff;
+  --ui-diff-added-bg: rgba(52, 211, 153, 0.16);
+  --ui-diff-removed-bg: rgba(248, 113, 113, 0.16);
+
+  --ui-shadow-lift: 0 4px 20px -2px rgba(0, 0, 0, 0.5), 0 2px 6px -1px rgba(0, 0, 0, 0.4);
+  --ui-shadow-lift-hover: 0 12px 32px -4px rgba(129, 140, 248, 0.2), 0 4px 12px -2px rgba(0, 0, 0, 0.5);
+  --ui-card-shadow: 0 1px 3px rgba(0, 0, 0, 0.4), 0 1px 2px rgba(0, 0, 0, 0.25);
+  --ui-card-shadow-md: 0 10px 25px -5px rgba(129, 140, 248, 0.15), 0 8px 10px -6px rgba(0, 0, 0, 0.4);
+  --ui-elevation-1: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --ui-elevation-2: 0 8px 24px rgba(129, 140, 248, 0.18);
+  --ui-elevation-3: 0 16px 36px rgba(129, 140, 248, 0.25);
+  --ui-glow-accent: 0 0 24px rgba(129, 140, 248, 0.3);
+}
+
+/* ===== Tokens auxiliares (comuns a ambos os temas) ===== */
+
+/* Escala de z-index — cobre todos os usos hardcoded do projeto */
+/* Semantic z-index tokens based on actual usage */
+:root {
+   --ui-z-login-photo: 2;
+   --ui-z-login-card: 3;
+   --ui-z-sidebar: 10;
+   --ui-z-brand-asset: 20;
+}
+
+/* Focus ring global acessível */
+:root {
+  --ui-focus-ring: 0 0 0 3px color-mix(in srgb, var(--ui-accent) 35%, transparent);
+}
+
+/* Transições padrão */
+:root {
+  --ui-transition-fast: 120ms ease-out;
+  --ui-transition-standard: 200ms ease-in-out;
+}
+
+/* Escala de spacing (base 4px) */
+:root {
+  --ui-space-1: 4px;
+  --ui-space-2: 8px;
+  --ui-space-3: 12px;
+  --ui-space-4: 16px;
+  --ui-space-5: 20px;
+  --ui-space-6: 24px;
+  --ui-space-8: 32px;
+  --ui-space-10: 40px;
+}
+
+/* Glass/acrylic — intensidade de blur (valor real auditado:
+   app-shell.css usa blur(20px) via --ui-glass-blur; cards/auth usam blur(8px)) */
+:root {
+  --ui-blur-strength: 16px;
+}
+
+/* Documentação: opacidade das superfícies acrílicas (não alterado).
+   Existentes: surface=0.75, surface-2=0.8, surface-hover=0.95,
+   container-background=0.72 (claro) / 0.85-0.9 (escuro). */
+:root[data-theme='dark'] {
+  --ui-surface-opacity: 0.85;
+}
+:root {
+  --ui-surface-opacity: 0.75;
+}

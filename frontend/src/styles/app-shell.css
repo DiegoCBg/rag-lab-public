@@ -1,0 +1,869 @@
+/* App shell global */
+.app-shell {
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr);
+  height: 100vh;
+  overflow: hidden;
+  background: var(--ui-bg);
+}
+
+/* Sidebar — Apple Glass & Fluent Acrylic */
+.app-sidebar {
+  background: var(--ui-container-background);
+  backdrop-filter: var(--ui-glass-blur);
+  -webkit-backdrop-filter: var(--ui-glass-blur);
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  box-shadow: var(--ui-card-shadow);
+  position: relative;
+  border-right: 1px solid var(--ui-border-soft);
+   z-index: var(--ui-z-sidebar);
+}
+
+/* Removido o efeito de luz lateral (glow) para um visual mais limpo */
+
+/* Brand no topo do sidebar */
+.brand {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0;
+  padding: 40px 20px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  background: none;
+  border-bottom: 1px solid var(--ui-border-soft);
+  margin: 0;
+  white-space: nowrap;
+}
+
+.brand-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 200px;
+  flex: 0 0 200px;
+  height: 48px;
+  background: transparent;
+  z-index: var(--ui-z-brand-asset);
+}
+
+.brand-badge svg {
+  width: 200px;
+  height: 200px;
+  color: var(--ui-accent);
+  display: block;
+}
+
+.brand-logo {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+  z-index: var(--ui-z-brand-asset);
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+:root[data-theme='dark'] .brand-logo {
+  /* Halo claro separa as letras pretas do fundo escuro sem editar o PNG. */
+  filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.9)) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.4));
+}
+
+.brand-logo:hover {
+  transform: scale(1.1);
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.brand-title {
+  color: var(--ui-text); /* Fixed visibility on light background */
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.brand-version {
+  color: var(--ui-accent); /* Use accent token for version badge */
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* Navigation no sidebar */
+.side-nav {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 8px 8px;
+}
+
+/* Individual nav links */
+.side-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ui-text);
+  text-decoration: none;
+  border-radius: 8px;
+  transition: all 0.15s ease;
+  cursor: pointer;
+  white-space: nowrap;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  position: relative;
+}
+
+.side-link:hover {
+  color: var(--ui-text);
+  background: var(--ui-surface-hover);
+}
+
+.side-link.active {
+  color: var(--ui-accent);
+  background: var(--ui-accent-soft);
+  font-weight: 600;
+  box-shadow: none;
+}
+
+.side-link.active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 20px;
+  border-radius: 0 2px 2px 0;
+  background: var(--ui-accent);
+}
+
+.side-link svg,
+.side-icon svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+
+.side-link.active svg,
+.side-link .side-icon svg {
+  opacity: 1;
+}
+
+.side-label {
+  flex: 1;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.1px;
+}
+
+.nav-section {
+  margin-bottom: 14px;
+}
+
+.nav-section-title {
+  display: block;
+  font-size: 10.5px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--ui-muted);
+  padding: 6px 12px 4px;
+}
+
+.nav-logout-link {
+  display: none;
+}
+
+.brand-badge--plain {
+  background: transparent;
+  border-radius: var(--ui-control-radius);
+}
+
+.side-badge {
+  /* Uniform badge style – matches the previous inline definition */
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 999px; /* keeps a pill shape */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.side-badge--accent {
+  background: var(--ui-accent);
+  color: var(--ui-on-accent);
+}
+
+.side-badge--soft {
+  background: var(--ui-accent-soft);
+  color: var(--ui-accent);
+}
+.side-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Footer do sidebar */
+.sidebar-footer {
+  padding: 12px 14px;
+  border-top: 1px solid var(--ui-border-soft);
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sidebar-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.sidebar-action-grow {
+  flex: 1;
+}
+
+.MuiButton-root.sidebar-icon-button {
+  min-width: 44px;
+}
+
+.sidebar-profile-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 10px;
+  border-radius: 12px;
+  background: var(--ui-surface);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--ui-border-soft);
+}
+
+.sidebar-profile-main {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.MuiAvatar-root.sidebar-avatar {
+  width: 32px;
+  height: 32px;
+  font-size: 13px;
+  font-weight: 700;
+  background: var(--ui-accent-gradient);
+  color: var(--ui-on-accent);
+}
+
+.sidebar-user-copy {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.MuiTypography-root.sidebar-username {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--ui-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.MuiTypography-root.sidebar-session-label {
+  font-size: 10.5px;
+  color: var(--ui-text-secondary);
+}
+
+.MuiIconButton-root.sidebar-logout-button {
+  color: var(--ui-text-secondary);
+  padding: 6px;
+  min-width: 36px;
+}
+
+.logout-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ui-text-secondary);
+  text-decoration: none;
+  border-radius: 8px;
+  transition: all 0.15s ease;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  border: none;
+  background: none;
+}
+
+.logout-btn:hover {
+  color: var(--ui-error);
+  background: var(--ui-error-soft);
+}
+
+/* Main content area — transition neutra */
+.app-main {
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: var(--ui-bg);
+  border-left: 1px solid transparent;
+}
+
+/* Container principal das páginas */
+.page, .page-content {
+  width: 100%;
+  min-width: 0;
+  padding: 20px 24px 36px;
+  max-width: calc(1600px - 160px);
+  margin: 0 auto;
+  overflow-x: hidden;
+}
+
+.page-header {
+  margin-bottom: var(--ui-gap-standard);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.page-header p {
+  margin: 0;
+  color: var(--ui-muted);
+}
+
+.page-header h1 {
+  margin: 0 0 8px;
+  font-size: 28px;
+  line-height: 1.25;
+  letter-spacing: 0;
+  font-weight: 800;
+}
+
+.page-header.compact {
+  margin-bottom: calc(var(--ui-gap-standard) * 0.75);
+}
+
+.page-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--ui-text);
+  letter-spacing: 0;
+  margin-bottom: 4px;
+}
+
+.page-header-snug {
+  margin-bottom: 20px;
+}
+
+.page-title-strong {
+  font-weight: 800;
+  color: var(--ui-text);
+}
+
+.transparent-panel {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.page-desc {
+  font-size: 13px;
+  color: var(--ui-text-secondary);
+}
+
+/* Tabs na página */
+.primary-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--ui-border-soft);
+  gap: 0;
+  margin-bottom: calc(var(--ui-gap-standard) * 0.75);
+  overflow-x: auto;
+  padding: 8px 28px;
+  background: var(--ui-surface);
+  backdrop-filter: blur(10px);
+}
+
+/* Cards com profundidade 3D */
+.card {
+  background: var(--ui-container-background);
+  border: 1px solid var(--ui-border-soft);
+  backdrop-filter: blur(8px);
+  border-radius: var(--ui-panel-radius);
+  padding: var(--ui-card-padding);
+  box-shadow: none;
+  transition: all 0.2s ease;
+}
+
+/* Cards de experimento — conteúdo compacto sem espaço morto */
+.experiments-page {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  align-items: start;
+}
+
+.experiments-page > .page-header,
+.experiments-page > .error-box,
+.experiments-page > .app-loading,
+.experiments-page > .muted-line {
+  grid-column: 1 / -1;
+}
+
+.experiment-card {
+  min-width: 0;
+  padding: 12px 14px;
+  margin-bottom: 0;
+}
+
+.experiment-card .kpi-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin-bottom: 0;
+}
+
+.experiment-card .experiment-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.experiment-card .experiment-head > div,
+.experiment-card .experiment-head > .muted-line {
+  min-width: 0;
+}
+
+.experiment-card .experiment-head strong,
+.experiment-card > p {
+  overflow-wrap: anywhere;
+}
+
+.experiment-card > p {
+  margin: 6px 0;
+}
+
+.experiment-card .kpi-card {
+  padding: 7px 9px;
+}
+
+.experiment-card .kpi-value {
+  font-size: 20px;
+}
+
+.card:hover {
+  box-shadow: var(--ui-elevation-2);
+}
+
+/* Panels */
+.surface-panel {
+  background: var(--ui-container-background);
+  border-radius: var(--ui-panel-radius);
+  border: 1px solid var(--ui-border-soft);
+  padding: var(--ui-card-padding);
+  box-shadow: none;
+  transition: all 0.2s ease;
+}
+
+.surface-panel:hover {
+  box-shadow: var(--ui-elevation-1);
+}
+
+/* Query workspace grid */
+.query-workspace-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.query-main {
+  min-height: 500px;
+}
+
+.query-configuration {
+  position: sticky;
+  top: 24px;
+  max-height: calc(100vh - 80px);
+  overflow-y: auto;
+}
+
+/* Config fields */
+.config-field {
+  margin-bottom: 16px;
+}
+
+.config-field:last-child {
+  margin-bottom: 0;
+}
+
+/* Metric cards com profundidade */
+.kpi-grid,
+.metrics-panel {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.kpi-card {
+  padding: 10px 14px;
+  border-radius: var(--ui-control-radius);
+}
+
+.metric-card {
+  background: var(--ui-surface);
+  border: 1px solid var(--ui-border-soft);
+  border-radius: var(--ui-panel-radius);
+  padding: 16px 18px;
+  box-shadow: var(--ui-card-shadow);
+  transition: all 0.2s ease;
+}
+
+.metric-card:hover {
+  box-shadow: var(--ui-elevation-1);
+  transform: translateY(-1px);
+}
+
+/* Tables e grids */
+.document-table {
+  border: 1px solid var(--ui-border-soft);
+  border-radius: var(--ui-panel-radius);
+  overflow: auto;
+  box-shadow: var(--ui-card-shadow);
+  background: var(--ui-surface);
+}
+
+/* Command bars */
+.command-bar, .document-command-bar, .comparison-toolbar {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  padding: 14px 16px;
+  background: var(--ui-surface);
+  border: 1px solid var(--ui-border-soft);
+  border-radius: var(--ui-panel-radius);
+  box-shadow: var(--ui-card-shadow);
+}
+
+/* Result stack */
+.result-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 24px;
+}
+
+/* Comparison grids */
+.comparison-answer-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+/* Auth pages */
+.auth-page {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 24px;
+}
+
+/* Imagem decorativa à esquerda do card de login (camada acima do fundo) */
+.auth-side-photo {
+  position: absolute;
+  left: 4%;
+  top: 50%;
+  transform: translateY(-50%);
+  max-width: 30%;
+  max-height: 70vh;
+  height: auto;
+  width: auto;
+  object-fit: contain;
+   z-index: var(--ui-z-login-photo);
+  pointer-events: none;
+  opacity: 0.8;
+  filter: brightness(1.05);
+}
+
+.auth-card {
+  position: relative;
+   z-index: var(--ui-z-login-card);
+  margin-left: clamp(40px, 6vw, 90px);
+  background: var(--ui-container-background);
+  backdrop-filter: blur(8px);
+  border-radius: 16px;
+  box-shadow: var(--ui-elevation-3);
+  border: 1px solid var(--ui-border-soft);
+  padding: 48px 40px;
+  max-width: 420px;
+  width: 100%;
+}
+
+.auth-card h1 {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--ui-text);
+  margin-bottom: 8px;
+}
+
+.auth-card p {
+  font-size: 14px;
+  color: var(--ui-text-secondary);
+  margin-bottom: 24px;
+}
+
+/* Forms */
+.form-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.form-grid input, .form-grid textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: var(--ui-control-radius);
+  border: 1px solid var(--ui-border-strong);
+  background: var(--ui-bg);
+  color: var(--ui-text);
+  font-size: 14px;
+  transition: all 0.15s ease;
+}
+
+.form-grid input:focus, .form-grid textarea:focus {
+  outline: none;
+  border-color: var(--ui-accent);
+  box-shadow: 0 0 0 3px var(--ui-border-focus);
+}
+
+/* Error/Success boxes */
+.error-box {
+  padding: 12px 14px;
+  border-radius: var(--ui-control-radius);
+  background: var(--ui-error-soft);
+  color: var(--ui-error);
+  border: 1px solid var(--ui-error-border);
+}
+
+/* ===== Força o tema claro nas páginas de login/register/forgot-password ===== */
+body.auth-view,
+body.auth-view :where(*) {
+  color-scheme: light;
+}
+
+body.auth-view {
+  --ui-bg: var(--ui-auth-bg);
+  --ui-surface: var(--ui-auth-surface);
+  --ui-surface-2: var(--ui-auth-surface-2);
+  --ui-surface-hover: var(--ui-auth-surface-hover);
+  --ui-container-background: var(--ui-auth-container-background);
+  --ui-glass-blur: var(--ui-auth-glass-blur);
+  --ui-glass-border: var(--ui-auth-glass-border);
+  --ui-border-soft: var(--ui-auth-border-soft);
+  --ui-border-strong: var(--ui-auth-border-strong);
+  --ui-border-focus: var(--ui-auth-border-focus);
+  --ui-text: var(--ui-auth-text);
+  --ui-text-secondary: var(--ui-auth-text-secondary);
+  --ui-muted: var(--ui-auth-muted);
+  --ui-accent-gradient: var(--ui-auth-accent-gradient);
+  --ui-accent-soft: var(--ui-auth-accent-soft);
+  --ui-accent-border: var(--ui-auth-accent-border);
+  --ui-success: var(--ui-auth-success);
+  --ui-success-soft: var(--ui-auth-success-soft);
+  --ui-success-border: var(--ui-auth-success-border);
+  --ui-error: var(--ui-auth-error);
+  --ui-error-soft: var(--ui-auth-error-soft);
+  --ui-error-border: var(--ui-auth-error-border);
+  --ui-warning: var(--ui-auth-warning);
+  --ui-warning-soft: var(--ui-auth-warning-soft);
+  --ui-warning-border: var(--ui-auth-warning-border);
+  --ui-code-bg: var(--ui-auth-code-bg);
+  --ui-code-text: var(--ui-auth-code-text);
+  --ui-on-accent: var(--ui-auth-on-accent);
+  --ui-shadow-lift: var(--ui-auth-shadow-lift);
+  --ui-shadow-lift-hover: var(--ui-auth-shadow-lift-hover);
+  --ui-card-shadow: var(--ui-auth-card-shadow);
+  --ui-card-shadow-md: var(--ui-auth-card-shadow-md);
+  --ui-elevation-1: var(--ui-auth-elevation-1);
+  --ui-elevation-2: var(--ui-auth-elevation-2);
+  --ui-elevation-3: var(--ui-auth-elevation-3);
+  --ui-glow-accent: var(--ui-auth-glow-accent);
+}
+
+/* Garante que variáveis MUI também usem valores claros */
+body.auth-view .MuiTypography-root,
+body.auth-view .MuiButtonBase-root,
+body.auth-view .MuiInputBase-input {
+  color: var(--ui-text);
+}
+
+.success-box {
+  padding: 12px 14px;
+  border-radius: var(--ui-control-radius);
+  background: var(--ui-success-soft);
+  color: var(--ui-success);
+  font-size: 13px;
+  border: 1px solid var(--ui-success-border);
+}
+
+.muted-line {
+  font-size: 13px;
+  color: var(--ui-text-secondary);
+  text-align: center;
+  margin-top: 16px;
+}
+
+.MuiAlert-root.industrial-error {
+  background: var(--ui-error-soft);
+  color: var(--ui-error);
+  border: 1px solid var(--ui-error-border);
+}
+
+.system-status-bar {
+  padding: 12px 28px;
+  background: var(--ui-container-background);
+  backdrop-filter: var(--ui-glass-blur);
+  border-bottom: 1px solid var(--ui-border-soft);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.MuiTypography-root.system-status-label {
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--ui-muted);
+  margin-right: 4px;
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: var(--ui-surface);
+  backdrop-filter: var(--ui-glass-blur);
+  border: 1px solid var(--ui-border-soft);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ui-text);
+  box-shadow: var(--ui-card-shadow);
+}
+
+.status-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  margin-right: 6px;
+  background: var(--ui-muted);
+}
+
+.status-dot.ok {
+  background: var(--ui-success);
+  box-shadow: 0 0 8px var(--ui-success-border);
+}
+
+.status-dot.error {
+  background: var(--ui-error);
+  box-shadow: 0 0 8px var(--ui-error-border);
+}
+
+.status-pill-icon {
+  display: inline-flex;
+  align-items: center;
+  opacity: 0.7;
+  font-size: 14px;
+}
+
+.status-pill-detail {
+  opacity: 0.55;
+  font-weight: 500;
+  margin-left: 2px;
+}
+
+.primary-tabs .MuiTabs-indicator {
+  background: var(--ui-accent);
+  height: 3px;
+  border-radius: 3px 3px 0 0;
+}
+
+.MuiTab-root.primary-route-tab {
+  text-transform: none;
+  font-weight: 600;
+  font-size: 13.5px;
+  min-height: 40px;
+}
+
+.MuiTab-root.primary-route-tab.active {
+  color: var(--ui-accent);
+}
+
+.MuiTab-root.primary-route-tab.inactive {
+  color: var(--ui-text-secondary);
+}
+
+/* Scrollbar styling — índigo sutil en sidebar */
+.app-sidebar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.app-sidebar::-webkit-scrollbar-thumb {
+  background: var(--ui-border-strong);
+  border-radius: 2px;
+}
+
+.app-sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.app-main::-webkit-scrollbar {
+  width: 6px;
+}
+
+.app-main::-webkit-scrollbar-thumb {
+  background: var(--ui-border-strong);
+  border-radius: 3px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease forwards;
+}

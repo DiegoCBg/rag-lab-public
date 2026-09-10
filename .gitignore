@@ -1,0 +1,74 @@
+﻿# ============================================================
+# RAG Lab Protótipo - .gitignore defensivo
+# ============================================================
+
+# Ambiente e segredos
+.env
+.env.*
+.env.local
+.env.*.local
+!.env.example
+
+# Bancos de dados
+*.db
+*.sqlite
+*.sqlite3
+*.db-*
+*.sqlite-*
+*.sqlite3-*
+*.bak
+*.pem
+*.key
+*.p12
+*.pfx
+chroma_db/
+
+# Armazenamento local
+storage/indexes/*.json
+storage/uploads/*
+.chroma/
+.vector_cache/
+backend/storage/
+storage/
+uploads/
+indexes/
+chroma/
+test-runtime/
+tmp-probe-chroma/
+backups/
+
+# Documentos e chunks
+EVIDENCIAS.jsonl
+dados/
+documentos/
+
+# Logs e caches
+logs/
+*.log
+.pytest_cache/
+__pycache__/
+node_modules/
+dist/
+.vite/
+.cache/
+.venv/
+venv/
+.coverage
+htmlcov/
+*.pyc
+
+# Modelos de ML
+.cache/huggingface/
+.cache/ollama/
+.cache/modelscope/
+
+# Temporários e IDE
+*.tmp
+~$*
+*.swp
+.vscode/*
+.idea/
+.DS_Store
+chrome-profile/
+.codex/
+.agents/

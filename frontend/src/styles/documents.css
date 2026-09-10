@@ -1,0 +1,555 @@
+.documents-page {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+/* ===== Fileira superior: Documents (esquerda) + Métricas (direita) ===== */
+.documents-top-row {
+  display: flex;
+  align-items: stretch;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+/* Bloco Documents — esquerda (título + busca + filtros + upload) */
+.documents-title-block {
+  flex: 3;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 2px;
+  padding: 12px 20px;
+  border: 1px solid var(--ui-border-soft);
+  border-radius: var(--ui-radius-xl);
+  background: var(--ui-surface);
+  box-shadow: var(--ui-card-shadow);
+}
+
+.documents-title-block:hover {
+  box-shadow: var(--ui-shadow-lift-hover);
+}
+
+.documents-title-block h1 {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0;
+  margin: 0 0 2px 0;
+  color: var(--ui-text);
+}
+
+.documents-title-block p {
+  font-size: 13px;
+  color: var(--ui-text-secondary);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Bloco de métricas — direita */
+.documents-metrics-strip {
+  flex: 2;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 12px 16px;
+  border: 1px solid var(--ui-border-soft);
+  border-radius: var(--ui-radius-xl);
+  background: var(--ui-container-background);
+  box-shadow: var(--ui-card-shadow);
+}
+
+.documents-metrics-strip:hover {
+  box-shadow: var(--ui-shadow-lift-hover);
+}
+
+.documents-metrics-title {
+  margin: 0 0 6px 0;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ui-muted);
+}
+
+/* Palate compacta no strip: sempre 3 colunas = 2 fileiras de 3 */
+.documents-metrics-strip .metrics-panel {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+  margin: 0;
+}
+
+.documents-metrics-strip .metric-item {
+  padding: 8px 10px;
+  gap: 2px;
+  box-shadow: none;
+}
+
+.documents-metrics-strip .metric-item:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.documents-metrics-strip .metric-item .MuiTypography-caption {
+  font-size: 10px;
+  line-height: 1.3;
+}
+
+.documents-metrics-strip .metric-number {
+  font-size: 18px;
+}
+
+.documents-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.document-metric-item {
+  display: grid;
+  gap: 2px;
+  padding: 8px 10px;
+  background: var(--ui-surface);
+  border: 1px solid var(--ui-border-soft);
+  border-radius: var(--ui-control-radius);
+}
+
+.document-metric-item .MuiTypography-caption {
+  color: var(--ui-text-secondary);
+  font-size: 10px;
+  line-height: 1.3;
+}
+
+.document-metric-item .metric-number {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+/* Command bar (filtros + upload) — embutida no bloco Documents */
+.document-command-bar {
+  background: var(--ui-surface-2);
+  border: none;
+  border-radius: 14px;
+  box-shadow: none;
+  padding: 10px 12px;
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+
+.doc-search-field {
+  flex: 0 0 100%;
+}
+
+.document-command-bar .MuiInputBase-input {
+  min-height: 0;
+  font-size: 14px;
+}
+
+.document-command-bar .MuiOutlinedInput-root {
+  min-height: 40px;
+}
+
+.document-command-bar .MuiSelect-select {
+  padding-top: 7px;
+  padding-bottom: 7px;
+  min-height: 0;
+}
+
+.document-command-bar .MuiButton-root {
+  height: 40px;
+  padding: 0 20px;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: none;
+  border-radius: 8px;
+}
+
+/* ===== Container da tabela — largura completa ===== */
+.documents-layout {
+  display: block;
+  margin-bottom: 0;
+}
+
+/* ===== Tabela — bloco separado ===== */
+.documents-workspace {
+  display: grid;
+  gap: 0;
+  margin: 0;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+}
+
+.document-table {
+  height: var(--document-table-height, 230px);
+  width: 100%;
+  background: var(--ui-surface);
+  border: 1px solid var(--ui-border-soft);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: var(--ui-shadow-lift);
+}
+
+.documents-collection-summary {
+  padding: 12px 16px;
+  color: var(--ui-text-secondary);
+  border: 1px solid var(--ui-border-soft);
+  border-top: 0;
+  border-radius: 0 0 var(--ui-control-radius) var(--ui-control-radius);
+  background: var(--ui-surface-2);
+}
+
+.document-action-button {
+  min-width: 0;
+  padding: 4px 6px;
+  text-transform: none;
+  color: var(--ui-text-secondary);
+}
+
+.document-action-button .MuiButton-startIcon {
+  margin-right: 4px;
+}
+
+.document-actions {
+  flex-wrap: wrap;
+  align-items: center;
+  max-height: 100%;
+  overflow-y: auto;
+}
+
+/* Ações ficam em um único menu para manter a tabela escaneável mesmo quando
+   o grafo está em processamento e oferece controles adicionais. */
+.document-action-menu-button {
+  width: 34px;
+  height: 34px;
+  color: var(--ui-text-secondary);
+}
+
+.document-action-menu-button:hover {
+  color: var(--ui-accent);
+  background: var(--ui-accent-soft);
+}
+
+.document-action-menu .MuiMenuItem-root {
+  min-width: 190px;
+  min-height: 40px;
+  gap: 8px;
+}
+
+.document-action-menu .MuiListItemIcon-root {
+  min-width: 28px;
+}
+
+.document-action-menu-delete {
+  color: var(--ui-error);
+}
+
+.document-action-menu-delete .MuiListItemIcon-root {
+  color: inherit;
+}
+
+.document-actions .document-action-button {
+  white-space: nowrap;
+}
+
+.document-table .MuiDataGrid-root,
+.executions-history-table .MuiDataGrid-root {
+  border: none;
+  border-radius: 18px;
+}
+
+.document-table .MuiDataGrid-columnHeaders {
+  border-radius: 18px 18px 0 0;
+}
+
+.document-table .MuiDataGrid-cell:focus,
+.document-table .MuiDataGrid-cell:focus-within {
+  outline: none;
+}
+
+/* O foco deve permanecer no botão acionado, sem destacar toda a célula. */
+.document-table .MuiDataGrid-cell[data-field='actions']:focus,
+.document-table .MuiDataGrid-cell[data-field='actions']:focus-within {
+  outline: none !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.MuiLinearProgress-root.doc-progress {
+  align-self: center;
+  height: 6px;
+  border-radius: 3px;
+}
+
+.document-table .MuiDataGrid-cell[data-field='progress'] {
+  display: flex;
+  align-items: center;
+}
+
+.document-table .MuiDataGrid-cell[data-field='actions'] {
+  justify-content: center;
+  overflow: visible;
+}
+
+.doc-progress .MuiLinearProgress-bar {
+  background: var(--ui-muted);
+  border-radius: 3px;
+}
+
+/* ===== Fila de ingestao — card dedicado ===== */
+.ingestion-job {
+  display: grid;
+  gap: 14px;
+  padding: 24px 28px;
+  margin-top: 20px;
+  background: var(--ui-surface);
+  border: 1px solid var(--ui-border-soft);
+  border-radius: var(--ui-radius-xl);
+  box-shadow: var(--ui-shadow-lift);
+  transition: box-shadow 0.25s ease;
+}
+
+.ingestion-job:hover {
+  box-shadow: var(--ui-shadow-lift-hover);
+}
+
+.ingestion-job-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ingestion-job-header .MuiChip-root {
+  border-radius: 999px;
+  padding: 2px 10px;
+}
+
+.ingestion-job-progress {
+  height: 6px;
+  border-radius: 3px;
+  background: var(--ui-surface-2);
+}
+
+.ingestion-job-progress .MuiLinearProgress-bar {
+  background: var(--ui-border-strong);
+  border-radius: 3px;
+}
+
+/* ===== Drawer de detalhe ===== */
+.MuiDrawer-paper.detail-drawer {
+  width: 480px;
+  background: var(--ui-container-background);
+  border-left: 1px solid var(--ui-border-soft);
+}
+
+.drawer-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--ui-border-soft);
+  background: var(--ui-surface); /* Neutral surface instead of gradient */
+}
+
+.drawer-head .MuiTypography-root {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ui-text);
+}
+
+.metadata-block {
+  padding: 24px;
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--ui-text-secondary);
+  background: var(--ui-bg);
+  overflow: auto;
+  max-height: calc(100vh - 200px);
+}
+
+/* Chunk cards com profundidade 3D */
+.chunk-card {
+  display: grid;
+  gap: var(--ui-gap-standard);
+  background: var(--ui-container-background);
+  border: 1px solid var(--ui-border-soft);
+  border-radius: var(--ui-panel-radius);
+  padding: var(--ui-card-padding);
+  box-shadow: var(--ui-card-shadow);
+  transition: all 0.2s ease;
+}
+
+.chunk-card:hover {
+  box-shadow: var(--ui-elevation-1);
+  transform: translateY(-1px);
+}
+
+.chunk-card[data-selected='true'] {
+  border-color: var(--ui-accent);
+  box-shadow: var(--ui-elevation-1), 0 0 0 1px var(--ui-accent);
+}
+
+.chunk-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.chunk-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ui-text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.chunk-score-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ui-accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.chunk-score-track {
+  width: 100%;
+  height: 6px;
+  background: var(--ui-surface-2);
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 8px;
+  border: 1px solid var(--ui-border-soft);
+}
+
+.chunk-score-fill {
+  height: 100%;
+  background: var(--ui-accent-gradient);
+  border-radius: 999px;
+  transition: width 0.3s ease;
+}
+
+.chunk-text {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--ui-text);
+  white-space: pre-wrap;
+  word-break: break-word;
+  margin-bottom: 8px;
+  max-height: 120px;
+  overflow: hidden;
+}
+
+.chunk-highlight {
+  background: var(--ui-warning-soft);
+  color: var(--ui-text);
+  border-radius: 3px;
+  padding: 0 2px;
+}
+
+.MuiChip-root.chunk-rank-chip {
+  background: var(--ui-accent-soft);
+  color: var(--ui-accent);
+  font-weight: 700;
+}
+
+.chunk-score-track {
+  height: 6px;
+  margin: 8px 0;
+}
+
+.MuiChip-root.chunk-score-chip {
+  font-size: 11px;
+  height: 22px;
+}
+
+.chunk-score-row {
+  margin-bottom: 8px;
+}
+
+.chunk-meta {
+  margin-top: 10px;
+}
+
+.MuiDrawer-paper.chunk-card-detail {
+  width: 460px;
+  padding: 24px;
+  backdrop-filter: var(--ui-glass-blur);
+  background: var(--ui-surface);
+}
+
+.drawer-inspection-card {
+  margin-bottom: 16px;
+  padding: 12px;
+  background: var(--ui-bg);
+  border-radius: 12px;
+  border: 1px solid var(--ui-border-soft);
+}
+
+.MuiTypography-root.chunk-drawer-title {
+  font-weight: 700;
+  margin: 0;
+}
+
+.MuiTypography-root.drawer-section-title {
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.MuiTypography-root.drawer-section-title.accent {
+  margin-bottom: 6px;
+  color: var(--ui-accent);
+}
+
+.drawer-text--compact {
+  font-size: 13px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+.chunk-metadata-block {
+  font-size: 12px;
+  border-radius: 12px;
+  padding: 14px;
+  overflow: auto;
+  max-height: 320px;
+}
+
+.drawer-finish-button {
+  margin-top: 20px;
+  border-radius: 10px;
+  text-transform: none;
+  font-weight: 600;
+}
+
+.chunk-meta {
+  min-height: 24px;
+  gap: 4px;
+}
+
+@media (max-width: 1023px) {
+  .chunk-text { max-height: none; }
+}
+
+/* ===== Histórico de Execuções — moldura única ===== */
+.executions-page {
+  max-width: 100%;
+}
+
+.executions-history-table {
+  overflow: hidden;
+  border: 1px solid var(--ui-border-soft);
+  border-radius: 18px;
+  background: var(--ui-surface);
+  box-shadow: var(--ui-shadow-lift);
+  height: calc(100vh - 230px);
+  min-height: 420px;
+  width: 100%;
+}
+
+.executions-history-table .MuiDataGrid-root {
+  height: 100%;
+}
+
